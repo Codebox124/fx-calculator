@@ -3,7 +3,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./three.css">
+    <style>
+      .pip-calculator {
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .input-section {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  select,
+  input[type="number"],
+  input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+    </style>
 </head>
 <body>
     <div class="pip-calculator">
@@ -30,6 +75,23 @@
         
         <button onclick="calculatePipValue()">Calculate</button>
       </div>
-      <script src="./three.js"></script>
+      <script>
+        function calculatePipValue() {
+    var accountType = document.getElementById("accountType").value;
+    var tradeSize = parseFloat(document.getElementById("tradeSize").value);
+    var pipValue = 0;
+    
+    if (accountType === "standard") {
+      pipValue = tradeSize;
+    } else if (accountType === "mini") {
+      pipValue = tradeSize / 10;
+    } else if (accountType === "micro") {
+      pipValue = tradeSize / 100;
+    }
+    
+    document.getElementById("pipValue").value = pipValue.toFixed(4);
+  }
+  
+      </script>
 </body>
 </html>

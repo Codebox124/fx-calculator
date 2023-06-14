@@ -3,7 +3,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./Two.css">
+   <style>
+    .position-size-calculator {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .input-section {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .results-section {
+    margin-top: 20px;
+  }
+  
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .result-item {
+    margin-bottom: 5px;
+  }
+  
+  .result-item span:first-child {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+   </style>
 </head>
 <body>
     <div class="position-size-calculator">
@@ -72,6 +135,22 @@
         
         <button onclick="calculatePositionSize()">Calculate</button>
       </div>
-      <script src="./Two.js"></script>
+      <script>
+        function calculatePositionSize() {
+    var accountSize = parseFloat(document.getElementById("accountSize").value);
+    var riskRatio = parseFloat(document.getElementById("riskRatio").value);
+    var stopLoss = parseFloat(document.getElementById("stopLoss").value);
+    var tradeSize = parseFloat(document.getElementById("tradeSize").value);
+    
+    var moneyUSD = accountSize * (riskRatio / 100) * (stopLoss / 100);
+    var units = tradeSize * 100000; // Assuming 1 lot = 100,000 units
+    var sizing = moneyUSD / stopLoss;
+    
+    document.getElementById("moneyUSD").textContent = moneyUSD.toFixed(2);
+    document.getElementById("units").textContent = units.toFixed(2);
+    document.getElementById("sizing").textContent = sizing.toFixed(2);
+  }
+  
+      </script>
 </body>
 </html>

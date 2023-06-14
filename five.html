@@ -4,7 +4,67 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pivot Point Calculator</title>
-  <link rel="stylesheet" href="/five.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-top: 0;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  .calculate-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .result {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    margin-top: 20px;
+  }
+</style>
 
 </head>
 <body>
@@ -26,8 +86,27 @@
     <p id="result" class="result"></p>
   </div>
 
-  <script src="/five.js">
- 
+  <script>
+ function calculatePivot() {
+    var high = parseFloat(document.getElementById('high').value);
+    var low = parseFloat(document.getElementById('low').value);
+    var close = parseFloat(document.getElementById('close').value);
+
+    if (!isNaN(high) && !isNaN(low) && !isNaN(close)) {
+      var pivot = (high + low + close) / 3;
+      var resistance1 = 2 * pivot - low;
+      var resistance2 = pivot + (high - low);
+      var support1 = 2 * pivot - high;
+      var support2 = pivot - (high - low);
+
+      document.getElementById('result').innerHTML =
+        'Pivot: ' + pivot.toFixed(2) + '<br>' +
+        'Resistance 1: ' + resistance1.toFixed(2) + '<br>' +
+        'Resistance 2: ' + resistance2.toFixed(2) + '<br>' +
+        'Support 1: ' + support1.toFixed(2) + '<br>' +
+        'Support 2: ' + support2.toFixed(2);
+    }
+  }
   </script>
 </body>
 </html>
