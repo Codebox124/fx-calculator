@@ -4,6 +4,7 @@
   <title>Currency Converter</title>
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <style>
   body {
   font-family: Arial, sans-serif;
@@ -75,52 +76,58 @@ button:hover {
 
 </style>
 <body>
-  <h1>Currency Converter</h1>
-
-  <div class="converter">
-    <input type="number" id="amount" placeholder="Amount">
-    <select id="fromCurrency">
-      <option value="USD">USD</option>
-      <option value="EUR">EUR</option>
-      <option value="GBP">GBP</option>
-      <!-- Add more currency options as needed -->
-    </select>
-    <select id="toCurrency">
-      <option value="USD">USD</option>
-      <option value="EUR">EUR</option>
-      <option value="GBP">GBP</option>
-      <!-- Add more currency options as needed -->
-    </select>
-    <button onclick="convertCurrency()">Convert</button>
-  </div>
-
-  <div id="result"></div>
-
-  <script>
-      
-        function convertCurrency() {
-  var amount = document.getElementById('amount').value;
-  var fromCurrency = document.getElementById('fromCurrency').value;
-  var toCurrency = document.getElementById('toCurrency').value;
-
-  var apiKey = '3c9280b568mshf91bc900500899cp12c210jsn0240f5e82bac'; // Replace with your own API key
-  var url = 'https://currency-converter-by-api-ninjas.p.rapidapi.com/v1/convertcurrency?have=USD&want=EUR&amount=5000' + fromCurrency + '&symbols=' + toCurrency + '&apiKey=' + apiKey;
-
-  fetch(url)
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(data) {
-      var conversionRate = data.rates[toCurrency];
-      var result = amount * conversionRate;
-      document.getElementById('result').innerHTML = amount + ' ' + fromCurrency + ' = ' + result + ' ' + toCurrency;
-    })
-    .catch(function(error) {
-      console.log('Error:', error);
-    });
-}
-
-
-  </script>
+  <section aria-labelledby="" id="currency-calculator-section" class="portlet-flex padding-20" style="">
+    <header class="portlet-title no-background no-border justify-content-center padding-left-0">
+      <h1 class="bold text-center">
+        <span class="changeSymbol">
+        Currency Converter
+        </span>
+        </h1>
+        </header>
+        <div class="portlet-body form currency-converter-form">
+          <div class="row">
+          <div class="col-xs-12">
+          <div class="col-md-offset-1 col-md-4 col-sm-5 converter-box">
+          <div class="converter-select text-center">
+          <select id="fromSelect" class="bold form-control input-sm text-align-last-center" name="currency">
+          <option selected data-image="https://fcsapi.com/assets/images/flags/eur.svg" data-desc="Euro" value="43">EUR</option>
+          </select>
+        </div>
+        <input id="fromAmountInput" inputmode="decimal" class="form-control input-sm no-border text-center font-21 converter-input" autocomplete="off" value=1>
+        </div>
+        <div class="col-sm-2 text-center converter-exchange-div hidden-xs">
+        <a class="exchangeBtn btn btn-responsive default yellow-casablanca">
+        <i class="fas fa-exchange-alt converter-exchange"></i>
+        </a>
+        </div>
+        <div class="col-md-4 col-sm-5 converter-box">
+        <div class="converter-select text-center">
+        <select id="toSelect" class="bold form-control input-sm text-align-last-center" name="currency">
+        <option selected data-image="https://fcsapi.com/assets/images/flags/usd.svg" data-desc="US Dollar" value="44">USD</option>
+        </select>
+        </div>
+         <input id="toAmountInput" inputmode="decimal" value="1.079" class="form-control input-sm no-border text-center font-21 converter-input" autocomplete="off">
+        </div>
+        <div class="col-xs-12 padding-tb-15 text-center converter-exchange-div hidden-sm hidden-md hidden-lg">
+        <a class="exchangeBtn btn btn-responsive default yellow-casablanca">
+        <i class="fas fa-exchange-alt converter-exchange"></i>
+        </a>
+        </div>
+        </div>
+        </div>
+        <div class="row padding-bottom-15">
+        <div class="col-xs-12 text-center margin-bottom-10 margin-top-15">
+        <span id="firstCurrencyComparison" class="font-18">
+        1 Euro = 1.079 US Dollar
+        </span>
+        </div>
+        <div class="col-xs-12 text-center margin-bottom-20">
+          <span id="secondCurrencyComparison" class="font-18">
+          1 US Dollar = 0.92665 Euro
+          <input type="hidden" data="">
+          </span>
+          </div>
+          </div>
+        </section>
 </body>
 </html>
