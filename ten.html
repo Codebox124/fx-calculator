@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profit Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+      margin-top: 0;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .calculate-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Profit Calculator</h1>
+    <div class="form-group">
+      <label for="cost-price">Cost Price ($)</label>
+      <input type="number" id="cost-price" placeholder="Enter Cost Price">
+    </div>
+    <div class="form-group">
+      <label for="selling-price">Selling Price ($)</label>
+      <input type="number" id="selling-price" placeholder="Enter Selling Price">
+    </div>
+    <button class="calculate-btn" onclick="calculateProfit()">Calculate</button>
+    <p id="result" class="result"></p>
+  </div>
+
+  <script>
+    function calculateProfit() {
+      var costPrice = parseFloat(document.getElementById('cost-price').value);
+      var sellingPrice = parseFloat(document.getElementById('selling-price').value);
+
+      if (!isNaN(costPrice) && !isNaN(sellingPrice)) {
+        var profit = sellingPrice - costPrice;
+
+        if (profit > 0) {
+          document.getElementById('result').textContent = 'Profit: $' + profit.toFixed(2);
+        } else if (profit < 0) {
+          document.getElementById('result').textContent = 'Loss: $' + Math.abs(profit).toFixed(2);
+        } else {
+          document.getElementById('result').textContent = 'No Profit or Loss';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
