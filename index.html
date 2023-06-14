@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      /* CSS Styles */
-      body {
+    body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
@@ -44,6 +43,12 @@
         background-color: #fff;
         padding: 20px;
         border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .widget-preview-grid:hover {
+        transform: translateY(-5px);
       }
 
       h2 {
@@ -64,6 +69,7 @@
 
       a.underline {
         text-decoration: none;
+        color: #333;
       }
     </style>
   </head>
@@ -152,7 +158,7 @@
             >
               <div class="grid-row-1-1">
                 <a
-                  href="/forex-calculators/pip-calculator"
+                  href="./three.html"
                   target="_self"
                   class="underline"
                 >
@@ -165,7 +171,7 @@
                 </p>
               </div>
               <div class="grid-row-1-3">
-                <a href="./three.html">
+                <a href="">
                   <img
                     loading="lazy"
                     class="img-responsive center-img border-light-gray"
@@ -205,53 +211,7 @@
               </div>
             </div>
           </div>
-          <div class="col-xs-12">
-            <div
-              class="widget-preview-grid grid-preview-auto col-xs-12 col-md-6 no-border-top"
-            >
-              <div class="grid-row-1-3">
-                <a href="/forex-calculators/fibonacci-calculator">
-                  <img
-                    loading="lazy"
-                    class="img-responsive center-img border-light-gray"
-                    src="https://static.mfbcdn.net/images/fibonacci.calculator.png"
-                    alt="Fibonacci calculator"
-                  />
-                </a>
-              </div>
-            </div>
-            <div
-              class="widget-preview-grid grid-preview-auto col-xs-12 col-md-6 no-border-top"
-            >
-              <div class="grid-row-1-1">
-                <a
-                  href="/forex-calculators/pivot-point-calculator"
-                  target="_self"
-                  class="underline"
-                >
-                  <h2>Pivot Point Calculator</h2>
-                </a>
-                <p class="no-margin">
-                  The Pivot Point Calculator will calculate 4 different Pivot
-                  Point types: Floor Pivot Points, Woodies Pivot Points,
-                  Camarilla Pivot Points and DeMarks Pivot Points. For Each
-                  type, 4 levels of resistance and support will be calculated
-                  based on a high price, low price, close price and an open
-                  price (for DeMarks Pivot Points only).
-                </p>
-              </div>
-              <div class="grid-row-1-3">
-                <a href="/forex-calculators/pivot-point-calculator">
-                  <img
-                    loading="lazy"
-                    class="img-responsive center-img border-light-gray"
-                    src="https://static.mfbcdn.net/images/pivot.points.calculator.png"
-                    alt="Pivot points calculator"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
+     
           <div class="col-xs-12">
             <div
               class="widget-preview-grid grid-preview-auto col-xs-12 col-md-6 no-border-top"
@@ -397,20 +357,7 @@
                 </a>
               </div>
             </div>
-            <div
-              class="widget-preview-grid grid-preview-auto col-xs-12 col-md-6 no-border-top"
-            >
-              <div class="grid-row-1-3">
-                <a href="/forex-calculators/rebate-calculator">
-                  <img
-                    loading="lazy"
-                    class="img-responsive center-img border-light-gray"
-                    src="https://static.mfbcdn.net/images/forex.rebate.calculator.jpg"
-                    alt="Forex rebate calculator"
-                  />
-                </a>
-              </div>
-            </div>
+          
           </div>
         </div>
       </div>
