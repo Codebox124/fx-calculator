@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="converter">
+        <h2 class="converter-heading">Forex Currency Converter</h2>
+        <div class="converter-inputs">
+          <input type="number" id="amount" class="converter-input" placeholder="Enter amount">
+        
+          <div class="currency-input">
+            <input type="text" id="fromCurrency" class="converter-input-field" placeholder="From Currency">
+            <span class="currency-symbol">&#9660;</span>
+          </div>
+          
+          <div class="currency-input">
+            <input type="text" id="toCurrency" class="converter-input-field" placeholder="To Currency">
+            <span class="currency-symbol">&#9660;</span>
+          </div>
+        </div>
+        
+        <button onclick="convertCurrency()" class="converter-btn">Convert</button>
+        
+        <p id="result" class="converter-result"></p>
+      </div>
+      
+      
+      
+      <script src="./index.js"></script>
+</body>
+</html>
