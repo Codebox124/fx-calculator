@@ -1,0 +1,77 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./Two.css">
+</head>
+<body>
+    <div class="position-size-calculator">
+        <h2>Position Size Calculator</h2>
+        
+        <div class="input-section" >
+            <label for="currencyPair">Currency Pair:</label>
+            <select id="currencyPair" style="width: 100%; padding: 1rem 0;">
+              <option value="EURUSD">EUR/USD</option>
+              <option value="GBPUSD">GBP/USD</option>
+              <option value="USDJPY">USD/JPY</option>
+              <option value="AUDUSD">AUD/USD</option>
+              <!-- Add more currency pairs as needed -->
+            </select>
+          </div>
+          
+        
+        <div class="input-section">
+          <label for="accountCurrency">Account Currency:</label>
+          <input type="text" id="accountCurrency">
+        </div>
+        
+        <div class="input-section">
+          <label for="accountSize">Account Size:</label>
+          <input type="number" id="accountSize">
+        </div>
+        
+        <div class="input-section">
+          <label for="riskRatio">Risk Ratio, %:</label>
+          <input type="number" id="riskRatio">
+        </div>
+        
+        <div class="input-section">
+          <label for="stopLoss">Stop-Loss, Pips:</label>
+          <input type="number" id="stopLoss">
+        </div>
+        
+        <div class="input-section">
+          <label for="tradeSize">Trade Size (Lots):</label>
+          <input type="number" id="tradeSize">
+        </div>
+        
+        <div class="results-section">
+            <h3>Results</h3>
+            
+            <table class="results-table">
+              <tr>
+                <th>Result</th>
+                <th>Value</th>
+              </tr>
+              <tr>
+                <td>Money, USD</td>
+                <td id="moneyUSD"></td>
+              </tr>
+              <tr>
+                <td>Units</td>
+                <td id="units"></td>
+              </tr>
+              <tr>
+                <td>Sizing</td>
+                <td id="sizing"></td>
+              </tr>
+            </table>
+          </div>
+          
+        
+        <button onclick="calculatePositionSize()">Calculate</button>
+      </div>
+      <script src="./Two.js"></script>
+</body>
+</html>
