@@ -1,262 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-      body{
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-h1 {
-  color: #333;
-  font-size: 24px;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
 
-table {
-  border-collapse: collapse;
-  margin-top: 20px;
-}
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      border-radius: 4px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-table th,
-table td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: center;
-}
+    h1 {
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+      margin-top: 0;
+    }
 
+    .form-group {
+      margin-bottom: 15px;
+    }
 
-.converter {
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .converter-heading {
-    text-align: center;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .converter-inputs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-  }
-  
-  .converter-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
-  .currency-input {
-    position: relative;
-    flex-basis: calc(50% - 10px);
-  }
-  
-  .converter-input-field {
-    width: calc(100% - 30px);
-    padding-right: 30px;
-  }
-  
-  .currency-symbol {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 16px;
-    color: #333;
-    cursor: pointer;
-  }
-  
-  .converter-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .converter-result {
-    text-align: center;
-    font-weight: bold;
-  }
-  
-    </style>
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .calculate-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .result {
+      text-align: center;
+      font-size: 18px;
+      color: #333;
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-
-
-
-<div class="converter">
-  <h2 class="converter-heading">Forex Currency Converter</h2>
-  <div class="converter-inputs">
-    <input type="number" id="amount" class="converter-input" placeholder="Enter amount">
-  
-    <div class="currency-input">
-      <input type="text" id="fromCurrency" class="converter-input-field" placeholder="From Currency">
-      <span class="currency-symbol">&#9660;</span>
+  <div class="container">
+    <h1>Currency Converter</h1>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" placeholder="Enter Amount">
     </div>
-    
-    <div class="currency-input">
-      <input type="text" id="toCurrency" class="converter-input-field" placeholder="To Currency">
-      <span class="currency-symbol">&#9660;</span>
+    <div class="form-group">
+      <label for="fromCurrency">From Currency</label>
+      <select id="fromCurrency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add more currency options as needed -->
+      </select>
     </div>
+    <div class="form-group">
+      <label for="toCurrency">To Currency</label>
+      <select id="toCurrency">
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <!-- Add more currency options as needed -->
+      </select>
+    </div>
+    <button class="calculate-btn" onclick="convertCurrency()">Convert</button>
+    <p id="result" class="result"></p>
   </div>
-  
-  <button onclick="convertCurrency()" class="converter-btn">Convert</button>
-  
-  <p id="result" class="converter-result"></p>
-</div>
 
-  <h1>Live Exchange Rates</h1>
+  <script>
+    function convertCurrency() {
+      var amount = parseFloat(document.getElementById('amount').value);
+      var fromCurrency = document.getElementById('fromCurrency').value;
+      var toCurrency = document.getElementById('toCurrency').value;
 
-  <h2>Convert EUR to USD</h2>
-  <table>
-    <tr>
-      <th>EUR</th>
-      <th>USD</th>
-    </tr>
-    <tr>
-      <td>5 EUR</td>
-      <td>5.43 USD</td>
-    </tr>
-    <tr>
-      <td>10 EUR</td>
-      <td>10.85 USD</td>
-    </tr>
-    <tr>
-      <td>25 EUR</td>
-      <td>27.13 USD</td>
-    </tr>
-    <tr>
-      <td>50 EUR</td>
-      <td>54.26 USD</td>
-    </tr>
-    <tr>
-      <td>100 EUR</td>
-      <td>108.53 USD</td>
-    </tr>
-    <tr>
-      <td>500 EUR</td>
-      <td>542.63 USD</td>
-    </tr>
-    <tr>
-      <td>1,000 EUR</td>
-      <td>1,085.26 USD</td>
-    </tr>
-    <tr>
-      <td>5,000 EUR</td>
-      <td>5,426.30 USD</td>
-    </tr>
-    <tr>
-      <td>10,000 EUR</td>
-      <td>10,852.60 USD</td>
-    </tr>
-    <tr>
-      <td>50,000 EUR</td>
-      <td>54,263.00 USD</td>
-    </tr>
-  </table>
+      // Define the exchange rates (replace with real-time rates)
+      var exchangeRates = {
+        USD: {
+          EUR: 0.85,
+          GBP: 0.72
+        },
+        EUR: {
+          USD: 1.18,
+          GBP: 0.85
+        },
+        GBP: {
+          USD: 1.39,
+          EUR: 1.18
+        }
+      };
 
-  <h2>Convert USD to EUR</h2>
-  <table>
-    <tr>
-      <th>USD</th>
-      <th>EUR</th>
-    </tr>
-    <tr>
-      <td>5 USD</td>
-      <td>4.61 EUR</td>
-    </tr>
-    <tr>
-      <td>10 USD</td>
-      <td>9.21 EUR</td>
-    </tr>
-    <tr>
-      <td>25 USD</td>
-      <td>23.04 EUR</td>
-    </tr>
-    <tr>
-      <td>50 USD</td>
-      <td>46.07 EUR</td>
-    </tr>
-    <tr>
-      <td>100 USD</td>
-      <td>92.14 EUR</td>
-    </tr>
-    <tr>
-      <td>500 USD</td>
-      <td>460.72 EUR</td>
-    </tr>
-    <tr>
-      <td>1,000 USD</td>
-      <td>921.44 EUR</td>
-    </tr>
-    <tr>
-      <td>5,000 USD</td>
-      <td>4,607.19
-
-
-
-
-
-      
-
-
-      
-      
-      <script>
-        $(document).ready(function() {
-    // Fetch the list of available currencies from the API
-    fetch("https://api.exchangerate-api.com/v4/latest/USD")
-      .then(response => response.json())
-      .then(data => {
-        var currencies = Object.keys(data.rates);
-        
-        // Enable autocomplete for the currency input fields
-        $("#fromCurrency, #toCurrency").autocomplete({
-          source: currencies
-        });
-      })
-      .catch(error => {
-        console.log("Error:", error);
-      });
-  });
-  
-  function convertCurrency() {
-    var amount = document.getElementById("amount").value;
-    var fromCurrency = document.getElementById("fromCurrency").value.toUpperCase();
-    var toCurrency = document.getElementById("toCurrency").value.toUpperCase();
-    
-    // API endpoint for currency conversion
-    var apiUrl = "https://api.exchangerate-api.com/v4/latest/" + fromCurrency;
-    
-    // Send a GET request to the API
-    fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-        var rate = data.rates[toCurrency]; // Exchange rate from the source currency to the target currency
-        var convertedAmount = amount * rate;
-        document.getElementById("result").innerHTML = amount + " " + fromCurrency + " = " + convertedAmount.toFixed(2) + " " + toCurrency;
-      })
-      .catch(error => {
-        console.log("Error:", error);
-      });
-  }
-  
-      </script>
+      if (!isNaN(amount)) {
+        if (fromCurrency === toCurrency) {
+          document.getElementById('result').textContent = 'Converted Amount: ' + amount.toFixed(2) + ' ' + toCurrency;
+        } else if (exchangeRates[fromCurrency] && exchangeRates[fromCurrency][toCurrency]) {
+          var convertedAmount = amount * exchangeRates[fromCurrency][toCurrency];
+          document.getElementById('result').textContent = 'Converted Amount: ' + convertedAmount.toFixed(2) + ' ' + toCurrency;
+        } else {
+          document.getElementById('result').textContent = 'Conversion rate not available.';
+        }
+      }
+    }
+  </script>
 </body>
 </html>
